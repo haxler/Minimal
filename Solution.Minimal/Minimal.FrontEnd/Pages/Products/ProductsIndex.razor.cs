@@ -2,6 +2,7 @@ using Blazored.Modal;
 using Blazored.Modal.Services;
 using CurrieTechnologies.Razor.SweetAlert2;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Localization;
 using Minimal.FrontEnd.Repositories;
 using Minimal.Shared.Entities;
 
@@ -23,6 +24,7 @@ public partial class ProductsIndex
     private List<Product>? Products { get; set; }
     [Parameter, SupplyParameterFromQuery] public int RecordsNumber { get; set; } = 10;
     [CascadingParameter] private IModalService Modal { get; set; } = default!;
+
 
     private async Task SelectedRecordsNumberAsync(int recordsnumber)
     {
@@ -149,7 +151,7 @@ public partial class ProductsIndex
         var result = await SweetAlertService.FireAsync(new SweetAlertOptions
         {
             Title = "Confirmación",
-            Text = string.Format("¿Está seguro de borrar el {0}: {1}?", "Productos", product.Name),
+            Text = string.Format("¿Está seguro de borrar el {0}: {1}?", "Producto", product.Name),
             Icon = SweetAlertIcon.Question,
             ShowCancelButton = true,
             CancelButtonText = "Cancelar"
@@ -184,8 +186,9 @@ public partial class ProductsIndex
             Position = SweetAlertPosition.BottomEnd,
             ShowConfirmButton = true,
             Timer = 3000,
-            ConfirmButtonText = "SI"
+            ConfirmButtonText = "Sí"
         });
         toast.FireAsync(icon: SweetAlertIcon.Success, message: "Registro borrado con éxito.");
     }
+
 }

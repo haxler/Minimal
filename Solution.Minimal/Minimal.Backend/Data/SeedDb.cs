@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Minimal.Shared.Entities;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+﻿using Minimal.Shared.Entities;
 
 namespace Minimal.Backend.Data;
 
@@ -26,11 +24,11 @@ public class SeedDb
         if (!_context.Products.Any())
         {
             _context.Products.Add(new Product { Name = "TELEVISOR", Price = 500000, Quantity = 5 });
-            _context.Products.Add(new Product { Name = "NEVERA",    Price = 800000, Quantity = 10 });
-            _context.Products.Add(new Product { Name = "LAVADORA",  Price = 800000, Quantity = 10 });
-            _context.Products.Add(new Product { Name = "SECADORA",  Price = 800000, Quantity = 10 });
-            _context.Products.Add(new Product { Name = "ARROCERA",  Price = 800000, Quantity = 10 });
-            _context.Products.Add(new Product { Name = "CAMA",      Price = 800000, Quantity = 10 });
+            _context.Products.Add(new Product { Name = "NEVERA", Price = 800000, Quantity = 10 });
+            _context.Products.Add(new Product { Name = "LAVADORA", Price = 800000, Quantity = 10 });
+            _context.Products.Add(new Product { Name = "SECADORA", Price = 800000, Quantity = 10 });
+            _context.Products.Add(new Product { Name = "ARROCERA", Price = 800000, Quantity = 10 });
+            _context.Products.Add(new Product { Name = "CAMA", Price = 800000, Quantity = 10 });
         }
 
         await _context.SaveChangesAsync();
