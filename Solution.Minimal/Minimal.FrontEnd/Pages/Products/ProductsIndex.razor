@@ -1,0 +1,45 @@
+﻿@page "/products"
+
+<div class="card">
+    <div class="card-header">
+        <span>
+            <i class="bi bi-buildings"></i> Productos
+            <a class="btn btn-sm btn-primary float-end" @onclick=@(() => ShowModalAsync())><i class="bi bi-plus-square"></i> Nuevo Producto</a>
+        </span>
+    </div>
+    <div class="card-body">
+        <Filter PlaceHolder="Buscar Producto..." Callback=@FilterCallBack />
+        <GenericList MyList="Products">
+            <Body>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Productos</th>
+                            <th style="width:168px"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Products!)
+                        {
+                            <tr>
+                                <td>
+                                    @product.Name
+                                </td>
+
+                                <td>
+                                    <a @onclick=@(() => ShowModalAsync(product.Id, true))  class="btn btn-sm btn-warning"><i class="bi bi-pencil" /> Editar</a>
+                                    <button @onclick=@(() => DeleteAsync(product)) class="btn btn-sm btn-danger"><i class="bi bi-trash" /> Borrar</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <Pagination CurrentPage="currentPage"
+                            TotalPages="totalPages"
+                            SelectedPage="SelectedPageAsync" 
+                            RecordsNumber="SelectedRecordsNumberAsync" />
+            </Body>
+        </GenericList>
+    </div>
+</div>

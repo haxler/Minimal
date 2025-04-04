@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-using System.Diagnostics.Metrics;
+﻿using Microsoft.EntityFrameworkCore;
 using Minimal.Shared.Entities;
 namespace Minimal.Backend.Data;
 
